@@ -1,0 +1,117 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #e0e0e0; /* Light text color for dark mode */
+}
+
+/* Chat container styles */
+.chat-container {
+    width: 400px;
+    max-width: 90%;
+    background: #1f1f1f; /* Slightly lighter background than body */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Chat box styles */
+.chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #333;
+}
+
+/* Message styles */
+.chat-box .message {
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* User message styles (green like WhatsApp) */
+.chat-box .user {
+    background-color: #25d366; /* WhatsApp green color */
+    text-align: right;
+    color: white; /* White text for contrast */
+}
+
+/* Bot message styles */
+.chat-box .bot {
+    background-color: #444;
+    text-align: left;
+    color: #fff;
+}
+
+/* Input container styles */
+.input-container {
+    display: flex;
+    padding: 10px;
+    background: #2c2c2c; /* Dark background for input area */
+}
+
+/* Input field styles */
+#chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333; /* Dark background for input */
+    color: #fff; /* Light text color for input */
+}
+
+/* Send button styles */
+#send-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Send button hover effect */
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Dark Mode for HTML content in response */
+.chat-box .bot p, .chat-box .user p {
+    margin: 8px 0;
+    color: #e0e0e0;
+}
+
+.chat-box .bot h1, .chat-box .user h1 {
+    color: #ffb74d;
+    font-size: 1.5em;
+}
+
+.chat-box .bot a, .chat-box .user a {
+    color: #66ccff;
+    text-decoration: none;
+}
+
+.chat-box .bot a:hover, .chat-box .user a:hover {
+    text-decoration: underline;
+}
+
+/* Other possible HTML elements */
+.chat-box .bot ul, .chat-box .user ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.chat-box .bot li, .chat-box .user li {
+    margin: 5px 0;
+    color: #e0e0e0;
+}

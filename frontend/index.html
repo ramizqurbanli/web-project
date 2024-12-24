@@ -1,0 +1,23 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A chat interface that allows users to send and receive messages in real-time.">
+  <title>Chat Interface</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box" role="log" aria-live="polite">
+      <!-- Chat messages will appear here -->
+    </div>
+    <div class="input-container">
+      <input type="text" id="chat-input" placeholder="Type a message...">
+      <button id="send-btn" aria-label="Send your message">Send</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
