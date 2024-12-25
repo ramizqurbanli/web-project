@@ -29,3 +29,5 @@ myenv/
 # Text files
 *.json
 *.log
+*.md
+backend/chat_logs.log
