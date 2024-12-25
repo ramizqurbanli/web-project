@@ -1,0 +1,45 @@
+2024-12-24 12:09:44,680 - INFO - User message: hello
+2024-12-24 12:09:46,048 - INFO - Cleaned bot response: <p>Hello there!</p>
+2024-12-24 12:11:44,861 - INFO - User message: Divide and Conquer strategy in politics
+2024-12-24 12:11:45,708 - INFO - Cleaned bot response: <h3>Divide and Conquer in Politics</h3>
+
+<p>Divide and conquer is a political strategy where a ruling power manipulates social divisions (e.g., by race, class, religion) to maintain control, weakening potential opposition by preventing unified action.  It thrives on sowing discord and exploiting existing tensions.</p>
+2024-12-24 12:15:05,081 - INFO - User message: Essay on Erdogan as a Great Leader
+2024-12-24 21:37:20,809 - INFO - User message: hello
+2024-12-24 21:37:22,202 - INFO - Cleaned bot response: <p>Hello there!</p>
+2024-12-24 21:38:57,429 - INFO - User message: Tomorrow is our exam and i should present you as my project  provide text
+2024-12-24 21:38:57,982 - INFO - Cleaned bot response: For your exam tomorrow,  present this text:  [Insert your project text here]
+2024-12-24 21:39:15,869 - INFO - User message: Chat Interface with Gemini Api
+2024-12-24 21:39:16,615 - INFO - Cleaned bot response: ## Chat Interface with Gemini API
+
+A chat interface using the Gemini API would allow users to interact with Gemini's powerful language model in a conversational manner.  This offers a more intuitive and engaging experience compared to traditional input fields.
+2024-12-24 21:39:45,578 - INFO - User message: a little longer
+2024-12-24 21:39:46,174 - INFO - Cleaned bot response: <p>Please provide the question.  I need the question to give you a longer answer.</p>
+2024-12-24 21:40:00,579 - INFO - User message: provide longer answers: ## Chat Interface with Gemini API A chat interface using the Gemini API would allow users to interact with Gemini's powerful language model in a conversational manner. This offers a more intuitive and engaging experience compared to traditional input fields.
+2024-12-24 21:40:01,292 - INFO - Cleaned bot response: <div>
+  <h3>Longer Answers?</h3>
+  <p>A chat interface leverages Gemini's conversational abilities for a more engaging user experience than simple text input.</p>
+</div>
+2024-12-24 21:40:27,260 - INFO - User message: hello
+2024-12-24 21:40:27,770 - INFO - Cleaned bot response: <p>Hello!</p>
+2024-12-24 21:40:49,372 - INFO - User message: Provide me tips in investing stocks
+2024-12-24 21:40:50,684 - INFO - Cleaned bot response: <h3>Investing Stock Tips:</h3>
+
+<ul>
+  <li><strong>Diversify:</strong> Don't put all your eggs in one basket.</li>
+  <li><strong>Long-term perspective:</strong>  Investing is a marathon, not a sprint.</li>
+  <li><strong>Research:</strong> Understand the companies you invest in.</li>
+  <li><strong>Dollar-cost averaging:</strong> Invest regularly, regardless of market fluctuations.</li>
+  <li><strong>Consider your risk tolerance:</strong>  Choose investments that align with your comfort level.</li>
+</ul>
+<p><em>Disclaimer: This is not financial advice. Consult a professional before making investment decisions.</em></p>
+2024-12-25 10:28:32,983 - INFO - User message: Who is Hakan Fidan
+2024-12-25 10:28:34,667 - INFO - Cleaned bot response: <h3>Hakan Fidan</h3>
+
+Hakan Fidan is a Turkish diplomat and politician currently serving as the Minister of Foreign Affairs of Turkey.  He previously served as the head of the National Intelligence Organization (MIT).
+2024-12-25 10:29:39,219 - INFO - User message: Taylor and Mauclaurin seriae
+2024-12-25 10:29:40,150 - INFO - Cleaned bot response: <h3>Taylor & Maclaurin Series</h3>
+
+Taylor and Maclaurin series are used to represent functions as infinite sums of terms, calculated from the function's derivatives at a single point.  A Maclaurin series is a special case of the Taylor series where the point is 0.  They are fundamental tools in calculus and analysis.
+2024-12-25 10:30:01,153 - INFO - User message: aylor and Mauclaurin series detailed with formulas
+2024-12-25 10:31:12,668 - INFO - User message: Taylor and Mauclaurin series detailed with formulas
