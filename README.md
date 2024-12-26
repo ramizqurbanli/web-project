@@ -1,7 +1,7 @@
-FastAPI Chatbot with Gemini API Integration
+Web Project - FastAPI Chatbot with Gemini API Integration
 
-This project is a simple chatbot backend using FastAPI and the Gemini API (Google Generative AI). 
-It allows users to send a message, and the chatbot responds with HTML-formatted text. 
+This project is a simple backend chatbot using FastAPI and the Gemini API (Google Generative AI).
+It allows users to send a message, and the chatbot responds with HTML-formatted text.
 The project also logs user messages and chatbot responses to a log file for debugging purposes.
 
 Features:
@@ -18,8 +18,8 @@ Requirements:
 Setup:
 
 1. Clone the repository:
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/ramizqurbanli/web-project.git
+   cd web-project
 
 2. Install dependencies:
    Create a virtual environment (optional but recommended) and install the required Python packages:
