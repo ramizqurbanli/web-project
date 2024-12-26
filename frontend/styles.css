@@ -235,7 +235,6 @@ body {
 
 /* Modified .chat-container */
 .chat-container {
-    /* ... other styles */
     display: flex;
     flex-direction: column;
     height: 100%; /* Important: Occupy full height of parent */
@@ -247,11 +246,9 @@ body {
     flex: 1 1 auto; /* Important: Allow chat box to grow and shrink */
     padding: 10px;
     overflow-y: auto;
-    /* ... other styles */
 }
 
 /* Input container */
 .input-container {
-    /* ... other styles */
     flex-shrink: 0; /* Prevent input container from shrinking */
 }
