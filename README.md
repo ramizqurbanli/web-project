@@ -7,7 +7,7 @@ The project also logs user messages and chatbot responses to a log file for debu
 Features:
 - Handles user chat messages and sends requests to the Gemini API.
 - Responds with HTML-formatted content.
-- Strips unnecessary markdown (e.g., ```html and ```).
+- Strips unnecessary markdown (e.g., \```html and \```).
 - Logs all chat messages and responses to a file (chat_logs.log).
 - CORS support for client-side integration.
 
