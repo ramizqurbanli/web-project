@@ -36,7 +36,7 @@ pydantic
 
 3. Set up Gemini API Key:
    To use the Gemini API, you need an API key from Google.
-   1. Sign up and get your Gemini API key from Google's Generative AI documentation: https://cloud.google.com/ai/generative
+   1. Sign up and get your Gemini API key from Google's Generative AI documentation: https://ai.google.dev
    2. Replace the empty GEMINI_API_KEY in the code with your API key:
       GEMINI_API_KEY = "your-api-key-here"
 
