@@ -48,11 +48,12 @@ async def chat(request: ChatRequest):
         
         # Create a model instance
         model = genai.GenerativeModel("gemini-1.5-flash")
-        
-        # Generate a response and request an HTML format
-        prompt = f"Provide a short response to the following question, formatted for web display:\n\n{request.message}"
 
-        response = model.generate_content(prompt)
+        if request.message.strip():
+        # Generate a response and request an HTML format
+            prompt = f"Provide a short response to the following question, formatted for web display:\n\n{request.message}"
+
+            response = model.generate_content(prompt)
         
         # Get raw response
         raw_response = response.text
