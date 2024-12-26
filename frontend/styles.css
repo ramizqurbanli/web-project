@@ -1,7 +1,7 @@
 /* General body styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background color */
+    background: linear-gradient(135deg, #121212, #2c2c2c); /* Gradient background */
     margin: 0;
     padding: 0;
     display: flex;
@@ -15,33 +15,34 @@ body {
 .chat-container {
     width: 400px;
     max-width: 90%;
-    background: #1f1f1f; /* Slightly lighter background than body */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background: rgba(31, 31, 31, 0.9); /* Slightly lighter and transparent background than body */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Larger shadow for depth */
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    animation: popIn 0.5s ease-in-out; /* Add pop-in animation */
 }
 
 /* Chat box styles */
 .chat-box {
     flex: 1;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
     border-bottom: 1px solid #333;
 }
 
 /* Message styles */
 .chat-box .message {
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    animation: fadeIn 0.5s ease-in-out;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px; /* More rounded corners */
+    animation: fadeInUp 0.5s ease-in-out; /* Smooth fade-in up animation */
 }
 
 /* User message styles (green like WhatsApp) */
 .chat-box .user {
-    background-color: #25d366; /* WhatsApp green color */
+    background: linear-gradient(135deg, #25d366, #3dd684); /* Gradient background for user messages */
     text-align: right;
     color: white; /* White text for contrast */
     animation: slideInRight 0.3s ease-in-out;
@@ -49,7 +50,7 @@ body {
 
 /* Bot message styles */
 .chat-box .bot {
-    background-color: #444;
+    background: linear-gradient(135deg, #444, #666); /* Gradient background for bot messages */
     text-align: left;
     color: #fff;
     animation: slideInLeft 0.3s ease-in-out;
@@ -58,16 +59,16 @@ body {
 /* Input container styles */
 .input-container {
     display: flex;
-    padding: 10px;
-    background: #2c2c2c; /* Dark background for input area */
+    padding: 15px;
+    background: rgba(44, 44, 44, 0.9); /* Dark and transparent background for input area */
 }
 
 /* Input field styles */
 #chat-input {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #555;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #333; /* Dark background for input */
     color: #fff; /* Light text color for input */
     transition: border-color 0.3s;
@@ -78,16 +79,17 @@ body {
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
     margin-left: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for smooth effect */
 }
 
 /* Send button hover effect */
 #send-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Dark Mode for HTML content in response */
@@ -135,6 +137,28 @@ body {
 @keyframes slideInLeft {
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* Input field focus effect */
