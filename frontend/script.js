@@ -7,12 +7,20 @@ const backendUrl = 'http://127.0.0.1:8000/chat'; // URL for your FastAPI backend
 
 // Append a message to the chat box
 function appendMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', sender);
-    messageDiv.innerHTML = text; // Use innerHTML to support HTML formatting
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
+  const messageDiv = document.createElement('div');
+  const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  
+  messageDiv.classList.add('message', sender);
+  
+  // Combine the message text with timestamp
+  messageDiv.innerHTML = `
+      ${text}
+      <span class="time">${currentTime}</span>
+  `;
+  
+  chatBox.appendChild(messageDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 // Send a message to the backend
 async function sendMessage(message) {
   appendMessage(message, 'user');

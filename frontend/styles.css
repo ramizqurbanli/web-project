@@ -94,20 +94,34 @@ body {
 }
 
 /* Message time */
+/* Message time */
 .message .time {
-    font-size: 0.7rem;
-    color: #888;
-    margin-top: 2px;
-    float: right;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    text-align: right;
+    margin-top: 4px;
+    margin-bottom: -2px;
+    padding-left: 8px;
+    float: none;
+    clear: both;
 }
 
+/* Specific adjustments for user/bot messages */
 .user .time {
-    margin-right: 5px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bot .time {
-    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.5);
 }
+
+/* Message adjustments */
+.message {
+    position: relative;
+    padding-bottom: 15px;
+}
+
 
 /* Input container */
 .input-container {
