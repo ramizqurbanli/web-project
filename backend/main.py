@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException  # type: ignore
-from pydantic import BaseModel  # type: ignore
-import google.generativeai as genai  # type: ignore
-from fastapi.middleware.cors import CORSMiddleware  # type: ignore
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import google.generativeai as genai
+from fastapi.middleware.cors import CORSMiddleware
 import logging
 import os
 
@@ -11,16 +11,19 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Adjust this for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Configure the Gemini API
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+# Validate and configure the Gemini API
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError("GEMINI_API_KEY environment variable is not set.")
+genai.configure(api_key=api_key)
 
-# Create the model
+# Configure generation settings
 generation_config = {
     "temperature": 1,
     "top_p": 0.95,
@@ -29,15 +32,17 @@ generation_config = {
     "response_mime_type": "text/plain",
 }
 
-model = genai.GenerativeModel(
-    model_name="gemini-1.5-flash",
-    generation_config=generation_config,
-)
+try:
+    # Create the generative model
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        generation_config=generation_config,
+    )
 
-chat_session = model.start_chat(
-    history=[
-    ]
-)
+    # Initialize a chat session
+    chat_session = model.start_chat(history=[])
+except Exception as e:
+    raise RuntimeError(f"Failed to initialize Gemini model or chat session: {str(e)}")
 
 # Set up logging to save logs to a file
 LOG_FILE = "chat_logs.log"
@@ -45,8 +50,9 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler(LOG_FILE),  # Save logs to the specified file
-    ]
+        logging.FileHandler(LOG_FILE),
+        logging.StreamHandler(),  # Also log to console
+    ],
 )
 logger = logging.getLogger(__name__)
 
@@ -57,27 +63,34 @@ class ChatRequest(BaseModel):
 @app.post("/chat")
 async def chat(request: ChatRequest):
     try:
-        # Log the user's message
-        logger.info(f"User message: {request.message}")
-        
-        if request.message.strip():
-            # Generate a response and request an HTML format
-            prompt = f"Provide a short response to the following question, formatted for web display:\n\n{request.message}"
-            response = chat_session.send_message(prompt)
-        
-            # Get raw response
-            raw_response = response.text
+        logger.info(f"Received message: {request.message}")
 
-            # Clean the response by removing unwanted markers from the start and end
-            cleaned_response = raw_response.strip("```html").strip("```").strip()
+        # Validate the message
+        if not request.message.strip():
+            raise HTTPException(status_code=400, detail="Message cannot be empty.")
 
-            # Log the cleaned response
-            logger.info(f"Cleaned bot response: {cleaned_response}")
-            
-            # Return the cleaned response
-            return {"response": cleaned_response}
-    
+        # Generate a response
+        prompt = f"Provide a short response to the following question:\n\n{request.message}"
+        response = chat_session.send_message(prompt)
+
+        # Ensure the response is valid
+        if not response or not response.text:
+            raise HTTPException(status_code=500, detail="Received an empty response from Gemini API.")
+
+        # Clean the response
+        cleaned_response = response.text.strip("```html").strip("```").strip()
+        logger.info(f"Cleaned response: {cleaned_response}")
+
+        return {"response": cleaned_response}
+
+    except HTTPException as e:
+        logger.error(f"HTTPException: {e.detail}")
+        raise e
     except Exception as e:
-        # Log the error
-        logger.error(f"Error communicating with Gemini API: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error communicating with Gemini API: {str(e)}")
+        logger.exception("Error in chat endpoint")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+
+# Run the application (use uvicorn to start the server)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
