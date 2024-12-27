@@ -18,10 +18,10 @@ app.add_middleware(
 )
 
 # Validate and configure the Gemini API
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise ValueError("GEMINI_API_KEY environment variable is not set.")
-genai.configure(api_key=api_key)
+
+API_KEY = 'your_api_key_here' # Replace with your API key
+genai.configure(api_key=API_KEY)
+
 
 # Configure generation settings
 generation_config = {
