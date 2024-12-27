@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import google.generativeai as genai
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, HTTPException #type: ignore
+from pydantic import BaseModel #type: ignore
+import google.generativeai as genai #type: ignore
+from fastapi.middleware.cors import CORSMiddleware #type: ignore
 import logging
 import os
 
@@ -92,5 +92,5 @@ async def chat(request: ChatRequest):
 
 # Run the application (use uvicorn to start the server)
 if __name__ == "__main__":
-    import uvicorn
+    import uvicorn #type: ignore
     uvicorn.run(app, host="0.0.0.0", port=8000)
