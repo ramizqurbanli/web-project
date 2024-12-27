@@ -3,6 +3,7 @@ from pydantic import BaseModel  # type: ignore
 import google.generativeai as genai  # type: ignore
 from fastapi.middleware.cors import CORSMiddleware  # type: ignore
 import logging
+import os
 
 # Initialize the FastAPI app
 app = FastAPI()
@@ -16,11 +17,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Replace with your Gemini API key
-GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
-
 # Configure the Gemini API
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+
+# Create the model
+generation_config = {
+    "temperature": 1,
+    "top_p": 0.95,
+    "top_k": 40,
+    "max_output_tokens": 8192,
+    "response_mime_type": "text/plain",
+}
+
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-flash",
+    generation_config=generation_config,
+)
+
+chat_session = model.start_chat(
+    history=[
+    ]
+)
 
 # Set up logging to save logs to a file
 LOG_FILE = "chat_logs.log"
@@ -39,34 +56,26 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat(request: ChatRequest):
-    
-    #Handles chat requests, logs all messages, and removes unnecessary markers from the response.
-
     try:
         # Log the user's message
         logger.info(f"User message: {request.message}")
         
-        # Create a model instance
-        model = genai.GenerativeModel("gemini-1.5-flash")
-
         if request.message.strip():
-        # Generate a response and request an HTML format
+            # Generate a response and request an HTML format
             prompt = f"Provide a short response to the following question, formatted for web display:\n\n{request.message}"
-
-            response = model.generate_content(prompt)
+            response = chat_session.send_message(prompt)
         
-        # Get raw response
-        raw_response = response.text
+            # Get raw response
+            raw_response = response.text
 
-        
-        # Clean the response by removing unwanted markers from the start and end
-        cleaned_response = raw_response.strip("```html").strip("```").strip()
+            # Clean the response by removing unwanted markers from the start and end
+            cleaned_response = raw_response.strip("```html").strip("```").strip()
 
-        # Log the cleaned response
-        logger.info(f"Cleaned bot response: {cleaned_response}")
-        
-        # Return the cleaned response
-        return {"response": cleaned_response}
+            # Log the cleaned response
+            logger.info(f"Cleaned bot response: {cleaned_response}")
+            
+            # Return the cleaned response
+            return {"response": cleaned_response}
     
     except Exception as e:
         # Log the error
