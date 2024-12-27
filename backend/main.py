@@ -19,7 +19,7 @@ app.add_middleware(
 
 # Validate and configure the Gemini API
 
-API_KEY = 'your_api_key_here' # Replace with your API key
+API_KEY = '' # Replace with your API key
 genai.configure(api_key=API_KEY)
 
 
@@ -29,7 +29,7 @@ generation_config = {
     "top_p": 0.95,
     "top_k": 40,
     "max_output_tokens": 8192,
-    "response_mime_type": "text/html",  # Requesting HTML response
+    "response_mime_type": "text/plain",  # Requesting HTML response
 }
 
 
